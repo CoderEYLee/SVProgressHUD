@@ -70,6 +70,21 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 /// @discussion Default: SVProgressHUDStyleAutomatic.
 @property (assign, nonatomic) SVProgressHUDStyle defaultStyle UI_APPEARANCE_SELECTOR;
 
+/// @discussion Default: nil.
+@property (strong, nonatomic, nullable) UIView *customIndefinitedAnimationView;
+
+/// @discussion Default: nil.
+@property (strong, nonatomic, nullable) UIView *customProgressAnimationView;
+
+/// @discussion Default: nil.
+@property (strong, nonatomic, nullable) UIView *customInfoView;
+
+/// @discussion Default: nil.
+@property (strong, nonatomic, nullable) UIView *customSuccessView;
+
+/// @discussion Default: nil.
+@property (strong, nonatomic, nullable) UIView *customErrorView;
+
 /// Represents the type of mask applied when the HUD is displayed.
 /// @discussion Default: SVProgressHUDMaskTypeNone.
 @property (assign, nonatomic) SVProgressHUDMaskType defaultMaskType UI_APPEARANCE_SELECTOR;
@@ -311,6 +326,15 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 /// @param motionEffectEnabled A boolean that determines if motion effects are enabled.
 + (void)setMotionEffectEnabled:(BOOL)motionEffectEnabled;
 
++ (void)setCustomIndefinitedAnimationView:(nullable UIView *)view;
+
++ (void)setCustomProgressAnimationView:(nullable UIView *)view;
+
++ (void)setCustomInfoView:(nullable UIView *)view;
+
++ (void)setCustomSuccessView:(nullable UIView *)view;
+
++ (void)setCustomErrorView:(nullable UIView *)view;
 
 #pragma mark - Show Methods
 
@@ -352,6 +376,10 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 /// @param image The custom image to be displayed.
 /// @param status The message to accompany the custom image.
 + (void)showImage:(nonnull UIImage*)image status:(nullable NSString*)status;
+
+// shows a view + status.
++ (void)showCustomView:(nonnull UIView*)view status:(nullable NSString*)status;
++ (void)showCustomView:(nonnull UIView *)view duration:(NSTimeInterval) displayInterval;
 
 /// Sets the offset from the center for the HUD.
 /// @param offset The UIOffset value indicating how much the HUD should be offset from its center position.
